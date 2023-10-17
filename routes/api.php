@@ -70,6 +70,7 @@ Route::post('reset', [NewPasswordController::class, 'reset']);
 
 
 //http://larafood/api/v1/tenants
+//http://larafood/api/v1/tenants
 //http://larafood/api/v1/tenants?token_company=14e500e2-05a5-45af-a603-05c2df3ea4d8
 //http://larafood/api/v1/orders
 //http://larafood/api/v1/orders?token_company=14e500e2-05a5-45af-a603-05c2df3ea4d8
