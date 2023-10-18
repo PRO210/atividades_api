@@ -18,7 +18,7 @@ class UserObserver
   public function creating(User $user)
   {
     $user->uuid = Str::uuid();
-    // $user->notify(new WelcomeEmailNotification($user));
+    $user->notify(new WelcomeEmailNotification($user));
   }
 
   /**
