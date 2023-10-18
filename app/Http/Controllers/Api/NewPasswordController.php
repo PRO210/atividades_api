@@ -40,7 +40,8 @@ class NewPasswordController extends Controller
         ->update(['token' => $token, 'created_at' => now()]);
     }
 
-    $url = "http://localhost:5173/reset-password/" . $token . "";
+    // $url = "http://localhost:5173/reset-password/" . $token . "";
+    $url = "https://atividades-por-pagina.netlify.app/reset-password/" . $token . "";
 
     $user->notify(new ResetPasswordNotification($url));
 
