@@ -107,7 +107,6 @@ class AuthController extends Controller
 
   public function upPassword(LoginRequest $request)
   {
-    // sleep(2);
     try {
       $request->validate([
         'email' => 'required|string|email|max:255',
@@ -139,8 +138,6 @@ class AuthController extends Controller
 
   public function logout(Request $request)
   {
-    sleep(2);
-
     try {
       $request->user()->tokens()->delete();
     } catch (\Throwable $th) {
@@ -154,6 +151,9 @@ class AuthController extends Controller
   public function destroy(string $uuid)
   {
     $user = User::where('uuid', $uuid)->firstOrFail();
+
+    $userDelResetTokens = DB::table('password_reset_tokens')->where('email', $user->email)->delete();
+    $userDelAccessTokens = DB::table('personal_access_tokens')->where('tokenable_id', $user->id)->delete();
 
     $user->delete();
 

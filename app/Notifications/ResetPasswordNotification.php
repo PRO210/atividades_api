@@ -37,9 +37,10 @@ class ResetPasswordNotification extends Notification
   public function toMail(object $notifiable): MailMessage
   {
     return (new MailMessage)
-      ->line('The introduction to the notification.')
-      ->action('Notification Action', url($this->url))
-      ->line('Thank you for using our application!');
+      ->line('Você está recebendo este e-mail porque recebemos uma solicitação de redefinição de senha para sua conta.')
+      ->action('Modificar Senha', url($this->url))
+      ->line('Se você não solicitou a redefinição de senha, nenhuma ação adicional será necessária.')
+      ->line('Obrigado por usar nosso aplicativo!');
   }
 
   /**

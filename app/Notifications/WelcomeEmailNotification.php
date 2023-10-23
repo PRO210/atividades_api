@@ -35,9 +35,9 @@ class WelcomeEmailNotification extends Notification
   public function toMail($user): MailMessage
   {
     return (new MailMessage)
-      ->line('Seja Bem Vindo:) ')
-      ->action('Voltar para o aplicativo', url('https://atividades-por-pagina.netlify.app/'))
-      ->line('Obrigado por usar nosso aplicativo!  ' . $user->name);
+      ->line('Seja Bem Vindo :) ')
+      ->action('Voltar para o Site ', url('https://atividades-por-pagina.netlify.app/'))
+      ->line('Que a criatividades esteja com vosco :)  ' . $user->name);
   }
 
   /**
