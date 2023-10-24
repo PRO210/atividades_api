@@ -83,8 +83,6 @@ class AuthController extends Controller
     ]);
   }
 
-  // ProfileUpdateRequest
-
   public function update(ProfileUpdateRequest $request)
   {
     try {
