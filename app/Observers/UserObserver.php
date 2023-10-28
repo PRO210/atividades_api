@@ -2,8 +2,10 @@
 
 namespace App\Observers;
 
+use App\Mail\Welcome;
 use App\Models\User;
 use App\Notifications\WelcomeEmailNotification;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 
@@ -18,7 +20,8 @@ class UserObserver
   public function creating(User $user)
   {
     $user->uuid = Str::uuid();
-    $user->notify(new WelcomeEmailNotification($user));
+    // $user->notify(new WelcomeEmailNotification($user));
+    Mail::to($user->email, $user->name)->send(new Welcome($user));
   }
 
   /**

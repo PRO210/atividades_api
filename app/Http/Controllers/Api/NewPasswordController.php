@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\ResetPassword;
 use App\Models\User;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 
 class NewPasswordController extends Controller
 {
@@ -41,10 +42,12 @@ class NewPasswordController extends Controller
     }
 
     // $url = "http://localhost:5173/reset-password/" . $token . "";
-    $url = "https://atividades-por-pagina.netlify.app/reset-password/" . $token . "";
+    $url = "https://atividades.app.proandre.com.br/reset-password/" . $token . "";
 
-    $user->notify(new ResetPasswordNotification($url));
+    // $user->notify(new ResetPasswordNotification($url));
+    $userEmail = $user->email;
 
+    Mail::to($userEmail, $user->name)->send(new ResetPassword($url));
 
     return response()->json(['message' => 'Link enviado para o email com successo!', 'status' => 200]);
   }

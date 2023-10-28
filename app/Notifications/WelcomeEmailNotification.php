@@ -36,7 +36,7 @@ class WelcomeEmailNotification extends Notification
   {
     return (new MailMessage)
       ->line('Seja Bem Vindo :) ')
-      ->action('Voltar para o Site ', url('https://atividades-por-pagina.netlify.app/'))
+      ->action('Voltar para o Site ', url('http://atividades.app.proandre.com.br/'))
       ->line('Que a criatividades esteja com vosco :)  ' . $user->name);
   }
 
