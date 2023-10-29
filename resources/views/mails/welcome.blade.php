@@ -25,7 +25,7 @@
       </div>
 
       <div class="div-paragrafo">
-        <p>Que a criatividades esteja com vosco :)</p>
+        <p>Que a criatividades esteja convosco :)</p>
       </div>
 
       <div class="div-paragrafo">
