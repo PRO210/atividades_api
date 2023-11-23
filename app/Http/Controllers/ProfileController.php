@@ -21,9 +21,13 @@ class ProfileController extends Controller
 
   public function index()
   {
-    $users = $this->repository->paginate();
+    $users = $this->repository->latest()->paginate();
 
-    return UserResource::collection($users);
+    // return UserResource::collection($users);
+
+    // dd($users);
+
+    return view('profile.index', ['users' => $users]);
   }
 
   /**
@@ -33,6 +37,15 @@ class ProfileController extends Controller
   {
     return view('profile.edit', [
       'user' => $request->user(),
+    ]);
+  }
+
+  public function WebEdit($uuid): View
+  {
+    $user = User::where('uuid', $uuid)->first();
+
+    return view('profile.edit', [
+      'user' => $user,
     ]);
   }
 

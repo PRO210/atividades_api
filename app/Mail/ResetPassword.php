@@ -31,7 +31,7 @@ class ResetPassword extends Mailable
   {
     return new Envelope(
       from: new Address('atividades@proandre.com.br'),
-      subject: $this->url,
+      subject: 'Notificação de redefinição de senha',
     );
   }
 

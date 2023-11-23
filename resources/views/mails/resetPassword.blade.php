@@ -25,8 +25,8 @@
       </div>
 
       <div class="div-botao">
-        <button class="botao">
-          <a class="link" href="{{$url ?? ''}}" target="_blank">Atualizar a Senha </a>
+        <button type="button">
+          <a href="{{$url ?? ''}}">Atualizar a Senha</a>
         </button>
       </div>
 
@@ -43,7 +43,7 @@
 
       <div class="div-paragrafo">
         <p>Caso o botão acima não funcione, copia e cole essa URL em seu
-          navegador:&nbsp;&nbsp; {{$url ?? ''}}
+          navegador:&nbsp;&nbsp; <a href="{{$url ?? ''}}">{{$url ?? ''}}</a>
         </p>
       </div>
 
