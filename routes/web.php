@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MercadoPagoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,11 @@ Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  Route::get('/dashboard/mp', [MercadoPagoController::class, 'criarPagamento'])->name('mp.index');
+  Route::post('/dashboard/mp/payment', [MercadoPagoController::class, 'payment'])->name('mp.payment');
 });
+
+Route::get('/mp', [MercadoPagoController::class, 'index']);
+
 
 require __DIR__ . '/auth.php';

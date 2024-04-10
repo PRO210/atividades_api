@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\NewPasswordController;
+use App\Http\Controllers\MercadoPagoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,8 +47,6 @@ Route::group(
 
 Route::apiResource('/users', ProfileController::class);
 
-// Route::apiResource('/users', ProfileController::class);
-
 Route::post('login', [AuthController::class, 'login']);
 Route::post('user/profile/update-password', [AuthController::class, 'upPassword']);
 
@@ -62,8 +61,11 @@ Route::post('email/verification-notification', [EmailVerificationController::cla
 Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
 
 Route::post('forgot', [NewPasswordController::class, 'store']);
-
 Route::post('reset', [NewPasswordController::class, 'reset']);
+
+Route::post('mp/create_preference', [MercadoPagoController::class, 'create_preference']);
+Route::post('mp/webhook', [MercadoPagoController::class, 'webhook']);
+Route::get('mp/storePayment', [MercadoPagoController::class, 'storePayment']);
 
 
 //http://larafood/api/v1/tenants
